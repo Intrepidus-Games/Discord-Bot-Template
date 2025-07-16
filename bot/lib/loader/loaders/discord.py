@@ -8,8 +8,8 @@ class DiscordCogLoader(FileLoader):
     """
     def __init__(
             self, 
+            debug: Debug, 
             auto_load: bool = True, 
-            debug: Debug = Debug(enabled=True), 
             path: str = "cogs", 
             bot: Bot = None,
         ):

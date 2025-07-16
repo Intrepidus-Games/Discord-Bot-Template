@@ -3,13 +3,18 @@ import os, glob, importlib.util, inspect
 import asyncio
 
 class FileLoader:
+    """
+        Initializes the FileLoader with the specified path and debug settings.
+        If auto_load is True, it will automatically load files in the specified path.
+    """
+
     def __init__(
             self, 
+            debug: Debug, 
             auto_load: bool = True,
-            debug: Debug=Debug(enabled=True), 
             path: str="routes",
         ) -> None:
-
+       
         # Set Defaults
         self.debug = debug
         self.path = path
@@ -20,6 +25,10 @@ class FileLoader:
             self.load()
 
     async def load_file(self, module, filename: str, run_func_name: str="run", *args, **kwargs):
+        """
+            Loads a file and executes the specified function.
+            If the function is a coroutine, it will be awaited.
+        """
         if hasattr(module, run_func_name):
             func = getattr(module, run_func_name)
 
@@ -45,6 +54,9 @@ class FileLoader:
             print(f"'{filename}' has no '{run_func_name}()' function.")
 
     def load(self, run_func_name: str="run", *args, **kwargs):
+        """
+            Loads all files in the specified path and executes the run function.
+        """
         failed_endpoints = 0
 
         self.debug.print("Loading endpoints")
