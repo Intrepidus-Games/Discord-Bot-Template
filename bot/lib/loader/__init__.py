@@ -19,7 +19,7 @@ class FileLoader:
         self.debug = debug
         self.path = path
 
-        self.debug.log(f"FileLoader initialized with path: {path}")
+        self.debug.print(f"FileLoader initialized with path: {path}")
 
         if auto_load:
             self.load()

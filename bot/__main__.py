@@ -15,7 +15,7 @@ debug = Debug(
 
 manager = BotManager(
     debug=debug, 
-    path="cogs",
+    path="bot/cogs",
     intents=discord.Intents.all()  # Set your desired intents here
 )
 
